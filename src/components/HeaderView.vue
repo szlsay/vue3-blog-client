@@ -12,14 +12,19 @@
     </template>
     <template #tags>
       <a-tag color="success">Tag 1</a-tag>
-      <a-tag><a href="https://github.com/vueComponent/ant-design">Link</a></a-tag>
+      <a-tag
+        ><a href="https://github.com/vueComponent/ant-design">Link</a></a-tag
+      >
       <a-tag closable @close="log">Tag 2</a-tag>
       <a-tag closable @close.prevent>Prevent Default</a-tag>
     </template>
     <template #extra>
-      <a-button type="primary">首页</a-button>
+      <!-- <a-button type="primary">首页</a-button>
       <a-button type="primary">归档</a-button>
-      <a-button type="primary">关于</a-button>
+      <a-button type="primary">关于</a-button> -->
+      <a-button v-for="item of menus" :key="item.text" :type="item.type" @click="item.handle">{{
+        item.text
+      }}</a-button>
     </template>
   </a-page-header>
 </template>
@@ -34,5 +39,11 @@ const avatar = reactive({
 const src = ref(
   'https://img1.baidu.com/it/u=668926479,2261779851&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1661187600&t=51ff3acffb60dbe564c082edd3e1efc5'
 )
+
+const menus = reactive([
+  { text: '首页', type: 'primary', handle: () => alert('首页') },
+  { text: '归档', type: 'dashed', handle: () => alert('归档') },
+  { text: '关于', type: 'default', handle: () => alert('关于') }
+])
 </script>
 <style scoped></style>
