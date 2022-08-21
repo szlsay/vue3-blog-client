@@ -30,7 +30,7 @@
   </a-page-header>
 </template>
 
-<script>
+<!-- <script>
 import { useWindowScrollStatus } from '../use/scroll.js'
 export default {
   props: {
@@ -51,6 +51,15 @@ export default {
     }
   }
 }
+</script> -->
+<script setup>
+import { useWindowScrollStatus } from '../use/scroll.js'
+const props = defineProps({
+  config: Object
+})
+const { avatar = {}, tags = [], menu = {} } = props.config || {}
+const isScroll = useWindowScrollStatus()
+
 </script>
 
 <style scoped>

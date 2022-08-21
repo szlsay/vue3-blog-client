@@ -1,20 +1,57 @@
-import HomeView from '@/views/HomeView.vue'
 /**
- * @type {import('vue-router').RouteRecordRaw()}
+ * 添加类型提示
+ * @type {import ('vue-router').RouteRecordRaw[]}
  */
 
 export const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/:pathMatch(.*)*', // 404页面
+    name: 'NotFound',
+    component: () => import('../views/common/NotFound.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/',
+    redirect: '/show'
+  },
+  {
+    path: '/show',
+    name: 'Show',
+    component: () => import('../views/show/IndexView.vue'),
+    children: [
+      {
+        path: '',
+        redirect: '/show/blogs/1'
+      },
+      {
+        path: 'blogs/:pageNum',
+        name: 'ShowBlog',
+        component: () => import('../views/show/BlogView.vue')
+      }
+      // {
+      //   path: 'books/:pageNum',
+      //   name: 'ShowBook',
+      //   component: () => import('../views/show/Book.vue')
+      // },
+      // {
+      //   path: 'projects',
+      //   name: 'ShowProject',
+      //   component: () => import('../views/show/Project.vue')
+      // },
+      // {
+      //   path: 'files',
+      //   name: 'ShowFile',
+      //   component: () => import('../views/show/File.vue')
+      // },
+      // {
+      //   path: 'list',
+      //   name: 'ShowList',
+      //   component: () => import('../views/show/List.vue')
+      // },
+      // {
+      //   path: 'about',
+      //   name: 'ShowAbout',
+      //   component: () => import('../views/show/About.vue')
+      // }
+    ]
   }
 ]

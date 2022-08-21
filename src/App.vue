@@ -1,5 +1,6 @@
 <template>
 <b-header :config="appViewConfig" />
+<router-view />
  <!-- <a-config-provider :locale="locale">
   <b-header :config="appViewConfig" />
   <router-view />
