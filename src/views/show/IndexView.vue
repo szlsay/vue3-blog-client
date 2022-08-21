@@ -14,22 +14,11 @@
   </main>
 </template>
 
-<script>
-import BViewHeader from '../../blocks/view-header'
-import { showIndexViewConfig } from '../../view-provider/show/index'
-import { useButtonGroup } from '../../use/button-group.jsx'
-
-export default {
-  components: {
-    BViewHeader,
-    UButtonGroup: useButtonGroup(showIndexViewConfig.buttonGroup)
-  },
-  setup() {
-    return {
-      showIndexViewConfig
-    }
-  }
-}
+<script setup>
+import BViewHeader from '@/blocks/view-header'
+import { showIndexViewConfig } from '@/view-provider/show/index'
+import { useButtonGroup } from '@/use/button-group.jsx'
+const UButtonGroup = useButtonGroup(showIndexViewConfig.buttonGroup)
 </script>
 
 <style scoped>

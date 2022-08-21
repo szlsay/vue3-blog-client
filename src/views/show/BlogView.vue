@@ -4,23 +4,10 @@
   </main>
 </template>
 
-<script>
-
-import BCardList from '../../blocks/CardList.vue'
-import { blogViewConfig } from '../../view-provider/show/blog'
-
-export default {
-  components: {
-    BCardList
-  },
-  setup() {
-    const { cardRecords } = blogViewConfig
-
-    return {
-      cardRecords
-    }
-  }
-}
+<script setup>
+import BCardList from '@/blocks/CardList.vue'
+import { blogViewConfig } from '@/view-provider/show/blog'
+const { cardRecords } = blogViewConfig
 </script>
 
 <style scoped>

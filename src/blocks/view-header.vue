@@ -14,16 +14,10 @@
 </template>
 
 <script>
-// import { PageHeader } from 'ant-design-vue'
-// import { LeftSquareOutlined } from '@ant-design/icons-vue'
 import { useRoutePathToPage } from '../use/router'
 import { useNotOnRouteWhiteListStatus } from '../use/route'
 
 export default {
-  // components: {
-  //   APageHeader: PageHeader,
-  //   LeftSquareOutlined
-  // },
   props: {
     config: {
       type: Object,

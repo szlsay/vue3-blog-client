@@ -13,16 +13,14 @@
     </a-card>
   </section>
 </template>
-
-<script>
-export default {
-  props: {
-    cardRecords: {
-      type: Array,
-      default: () => []
-    }
+<script setup>
+const props = defineProps({
+  cardRecords: {
+    type: Array,
+    default: () => []
   }
-}
+})
+const cardRecords = props.cardRecords || []
 </script>
 
 <style scoped>
