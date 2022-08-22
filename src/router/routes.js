@@ -36,22 +36,22 @@ export const routes = [
         path: 'projects',
         name: 'ShowProject',
         component: () => import('../views/show/ProjectView.vue')
+      },
+      {
+        path: 'files',
+        name: 'ShowFile',
+        component: () => import('../views/show/FileView.vue')
+      },
+      {
+        path: 'list',
+        name: 'ShowList',
+        component: () => import('../views/show/ListView.vue')
+      },
+      {
+        path: 'about',
+        name: 'ShowAbout',
+        component: () => import('../views/show/AboutView.vue')
       }
-      // {
-      //   path: 'files',
-      //   name: 'ShowFile',
-      //   component: () => import('../views/show/File.vue')
-      // },
-      // {
-      //   path: 'list',
-      //   name: 'ShowList',
-      //   component: () => import('../views/show/List.vue')
-      // },
-      // {
-      //   path: 'about',
-      //   name: 'ShowAbout',
-      //   component: () => import('../views/show/About.vue')
-      // }
     ]
   }
 ]
