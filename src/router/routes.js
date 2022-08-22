@@ -26,17 +26,17 @@ export const routes = [
         path: 'blogs/:pageNum',
         name: 'ShowBlog',
         component: () => import('../views/show/BlogView.vue')
+      },
+      {
+        path: 'books/:pageNum',
+        name: 'ShowBook',
+        component: () => import('../views/show/BookView.vue')
+      },
+      {
+        path: 'projects',
+        name: 'ShowProject',
+        component: () => import('../views/show/ProjectView.vue')
       }
-      // {
-      //   path: 'books/:pageNum',
-      //   name: 'ShowBook',
-      //   component: () => import('../views/show/Book.vue')
-      // },
-      // {
-      //   path: 'projects',
-      //   name: 'ShowProject',
-      //   component: () => import('../views/show/Project.vue')
-      // },
       // {
       //   path: 'files',
       //   name: 'ShowFile',
