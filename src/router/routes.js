@@ -72,12 +72,12 @@ export const routes = [
         path: 'editor',
         name: 'ManageEditor',
         component: () => import('../views/manage/EditorView.vue')
+      },
+      {
+        path: 'articles/:pageNum',
+        name: 'ManageArticle',
+        component: () => import('../views/manage/ArticlesView.vue')
       }
-      // {
-      //   path: 'articles/:pageNum',
-      //   name: 'ManageArticle',
-      //   component: () => import('../views/manage/Articles.vue')
-      // }
     ]
   }
 ]

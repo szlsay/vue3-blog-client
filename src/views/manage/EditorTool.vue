@@ -27,15 +27,19 @@
 import '@wangeditor/editor/dist/css/style.css'
 import { onBeforeUnmount, ref, shallowRef } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-
+import { uselocalStorage } from '@/use/local-storage'
+import { useInfoNotice } from '@/use/notice'
+import { debounce } from '@/use/common.js'
+import xss from 'xss'
 // export default {
 //   components: { Editor, Toolbar },
 //   setup() {
 // 编辑器实例，必须用 shallowRef，重要！
 const editorRef = shallowRef()
 
+const [draft] = uselocalStorage('draft')
 // 内容 HTML
-const valueHtml = ref('<p>hello</p>')
+const valueHtml = ref(draft.value)
 
 const toolbarConfig = {}
 const editorConfig = { placeholder: '请输入内容...' }
@@ -52,9 +56,33 @@ const handleCreated = (editor) => {
   console.log('created', editor)
   editorRef.value = editor // 记录 editor 实例，重要！
 }
-const handleChange = (editor) => {
+// const handleChange = useDebouce((newHtml) => {
+//   console.log(111111111111)
+//   console.log(newHtml)
+//   // draft.value = xss(newHtml)
+//   // useInfoNotice({
+//   //   message: '草稿',
+//   //   description: '已缓存'
+//   // })
+// }, 3000)
+
+const handleChange = debounce((editor) => {
   console.log('change:', editor.getHtml())
-}
+  draft.value = xss(editor.getHtml())
+  console.log('draft.value:', draft.value)
+  useInfoNotice({
+    message: '草稿',
+    description: '已缓存'
+  })
+  // useDebouce(() => {
+  //   draft.value = xss(editor.getHtml())
+  //   console.log('draft.value:', draft.value)
+  //   useInfoNotice({
+  //     message: '草稿',
+  //     description: '已缓存'
+  //   })
+  // }, 3000)
+})
 const handleDestroyed = (editor) => {
   console.log('destroyed', editor)
 }
