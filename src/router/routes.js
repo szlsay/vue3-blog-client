@@ -53,5 +53,31 @@ export const routes = [
         component: () => import('../views/show/AboutView.vue')
       }
     ]
+  },
+  {
+    path: '/manage',
+    name: 'Manage',
+    component: () => import('../views/manage/IndexView.vue'),
+    children: [
+      {
+        path: '',
+        redirect: '/manage/login'
+      },
+      {
+        path: 'login',
+        name: 'ManageLogin',
+        component: () => import('../views/manage/LoginView.vue')
+      },
+      {
+        path: 'editor',
+        name: 'ManageEditor',
+        component: () => import('../views/manage/EditorView.vue')
+      }
+      // {
+      //   path: 'articles/:pageNum',
+      //   name: 'ManageArticle',
+      //   component: () => import('../views/manage/Articles.vue')
+      // }
+    ]
   }
 ]
